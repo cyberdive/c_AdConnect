@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.DirectoryServices;
 using System.DirectoryServices.AccountManagement;
+using System.Configuration;
 
 namespace AdConnect
 {
@@ -35,15 +36,15 @@ namespace AdConnect
 
         private void InitConfiguration()
         {
-            /// this.environnements = ((IEnumerable<string>)ConfigurationManager.AppSettings["ENVIRONNEMENTS"].Split(',')).ToList<string>();
+             this.environnements = ((IEnumerable<string>)ConfigurationManager.AppSettings["ENVIRONNEMENTS"].Split(',')).ToList<string>();
             this.lstEnv.DataSource = (object)this.environnements;
         }
 
         private void InitForm(string environnement)
         {
-            ///  this.txtServer.Text = ConfigurationManager.AppSettings[string.Format("{0}_SERVER_HOST", (object)environnement)];
-            ///  this.txtPort.Text = ConfigurationManager.AppSettings[string.Format("{0}_SERVER_PORT", (object)environnement)];
-            ///  this.txtContainer.Text = ConfigurationManager.AppSettings[string.Format("{0}_SERVER_CONTAINER", (object)environnement)];
+              this.txtServer.Text = ConfigurationManager.AppSettings[string.Format("{0}_SERVER_HOST", (object)environnement)];
+              this.txtPort.Text = ConfigurationManager.AppSettings[string.Format("{0}_SERVER_PORT", (object)environnement)];
+              this.txtContainer.Text = ConfigurationManager.AppSettings[string.Format("{0}_SERVER_CONTAINER", (object)environnement)];
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -55,10 +56,10 @@ namespace AdConnect
                 {
                     string str = text + ":" + this.txtPort.Text;
                 }
-                /// this.txtOutput.Text = string.Format("{0} results found", (object)new DirectorySearcher(this.CreateDirectoryEntry(this.PathBase()))
+                 this.txtOutput.Text = string.Format("{0} results found", (object)new DirectorySearcher(this.CreateDirectoryEntry(this.PathBase()))
                 {
-                    ///    Filter = this.txtFilter.Text
-                }///.FindAll().Count);
+                        Filter = this.txtFilter.Text
+                }.FindAll().Count);
             }
             catch (Exception ex)
             {
