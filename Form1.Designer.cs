@@ -230,6 +230,7 @@ namespace AdConnect
             this.lstEnv.Name = "lstEnv";
             this.lstEnv.Size = new System.Drawing.Size(309, 21);
             this.lstEnv.TabIndex = 10;
+            this.lstEnv.SelectedIndexChanged += new System.EventHandler(this.LstEnv_SelectedIndexChanged);
             // 
             // txtPassword
             // 

@@ -18,16 +18,32 @@ namespace AdConnect
         public Form1()
         {
             InitializeComponent();
+            this.InitConfiguration();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                string text = this.txtServer.Text;
+                if (string.IsNullOrEmpty(this.txtPort.Text))
+                {
+                    string str = text + ":" + this.txtPort.Text;
+                }
+                this.txtOutput.Text = string.Format("{0} results found", (object)new DirectorySearcher(this.CreateDirectoryEntry(this.PathBase()))
+                {
+                    Filter = this.txtFilter.Text
+                }.FindAll().Count);
+            }
+            catch (Exception ex)
+            {
+                this.txtOutput.Text = ex.ToString() + ex.InnerException?.ToString();
+            }
         }
         public string PathBase()
         {
@@ -47,25 +63,7 @@ namespace AdConnect
               this.txtContainer.Text = ConfigurationManager.AppSettings[string.Format("{0}_SERVER_CONTAINER", (object)environnement)];
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string text = this.txtServer.Text;
-                if (string.IsNullOrEmpty(this.txtPort.Text))
-                {
-                    string str = text + ":" + this.txtPort.Text;
-                }
-                 this.txtOutput.Text = string.Format("{0} results found", (object)new DirectorySearcher(this.CreateDirectoryEntry(this.PathBase()))
-                {
-                        Filter = this.txtFilter.Text
-                }.FindAll().Count);
-            }
-            catch (Exception ex)
-            {
-                this.txtOutput.Text = ex.ToString() + ex.InnerException?.ToString();
-            }
-        }
+     
 
         public DirectoryEntry CreateDirectoryEntry(string path)
         {
@@ -74,7 +72,9 @@ namespace AdConnect
             return new DirectoryEntry(path, string.IsNullOrWhiteSpace(this.txtLogin.Text) ? (string)null : this.txtLogin.Text, string.IsNullOrWhiteSpace(this.txtPassword.Text) ? (string)null : this.txtPassword.Text);
         }
 
-        private void lstEnv_SelectedIndexChanged_1(object sender, EventArgs e)
+     
+
+        private void LstEnv_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.InitForm(this.lstEnv.SelectedValue.ToString());
         }
