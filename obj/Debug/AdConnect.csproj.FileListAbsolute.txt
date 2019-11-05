@@ -1,0 +1,10 @@
+D:\git\c_AdConnect\obj\Debug\AdConnect.csprojAssemblyReference.cache
+D:\git\c_AdConnect\obj\Debug\AdConnect.Form1.resources
+D:\git\c_AdConnect\obj\Debug\AdConnect.Properties.Resources.resources
+D:\git\c_AdConnect\obj\Debug\AdConnect.csproj.GenerateResource.cache
+D:\git\c_AdConnect\obj\Debug\AdConnect.csproj.CoreCompileInputs.cache
+D:\git\c_AdConnect\bin\Debug\AdConnect.exe.config
+D:\git\c_AdConnect\bin\Debug\AdConnect.exe
+D:\git\c_AdConnect\bin\Debug\AdConnect.pdb
+D:\git\c_AdConnect\obj\Debug\AdConnect.exe
+D:\git\c_AdConnect\obj\Debug\AdConnect.pdb
